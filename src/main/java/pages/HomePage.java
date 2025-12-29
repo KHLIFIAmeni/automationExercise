@@ -17,6 +17,8 @@ public class HomePage {
     WebElement HomePageVisible;
     @FindBy(xpath = "//a[normalize-space()='Signup / Login']")
     WebElement SignupButton;
+    @FindBy(linkText = "Contact us")
+    WebElement contactLink;
     // without PageFactory
 //    private By HomePageVisible = By.id("slider");
 //    private By SignupButton = By.xpath("//a[normalize-space()='Signup / Login']");
@@ -28,4 +30,5 @@ public class HomePage {
     public void ClickButtonSignup(){
       SignupButton.click();
     }
+    public void clickContactLink(){contactLink.click();}
 }

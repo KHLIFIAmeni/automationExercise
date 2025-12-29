@@ -15,6 +15,8 @@ public class LoginPage {
     }
     @FindBy(xpath = "//h2[contains(text(),'New User Signup')]")
     WebElement newUserSignupText;
+    @FindBy(xpath = "//h2[normalize-space()='Login to your account']")
+    WebElement loginAccountText;
 
     @FindBy(xpath = "//input[@data-qa='signup-name']")
     WebElement signupName;
@@ -24,6 +26,14 @@ public class LoginPage {
 
     @FindBy(xpath = "//button[@data-qa='signup-button']")
     WebElement signupButton;
+    @FindBy(xpath = "//input[@data-qa='login-email']")
+    WebElement loginEmail;
+    @FindBy(xpath = "//input[@data-qa='login-password']")
+    WebElement loginPassword;
+    @FindBy(xpath = "//button[@data-qa='login-button']")
+    WebElement loginButton;
+    @FindBy(xpath = "//p[normalize-space()='Your email or password is incorrect!']")
+    WebElement errorMessage;
 
     // Without PageFactory
 //    private By newUserSignupText = By.xpath("//h2[contains(text(),'New User Signup')]");
@@ -41,5 +51,18 @@ public class LoginPage {
     }
     public void clickSignupButton(){
         signupButton.click();
+    }
+    public boolean isLoginAccountVisible(){
+        return loginAccountText.isDisplayed();
+    }
+    public void enterCorrectEmailPassword(String email, String password){
+        loginEmail.sendKeys(email);
+        loginPassword.sendKeys(password);
+    }
+    public void clickLoginButton(){
+        loginButton.click();
+    }
+    public boolean isErrorMessageVisible(){
+        return errorMessage.isDisplayed();
     }
 }
